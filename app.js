@@ -3,7 +3,7 @@ fs = require('fs');
 
 
 
-port = 3000;
+port = 80;
 host = '0.0.0.0';
 
 server = http.createServer(function(req, res) {
