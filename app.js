@@ -47,7 +47,7 @@ var update = function(data) {
     }
     var game = gameCollection[data.provider.steamid];
     game.raw = data;
-    console.log(game.map.phase);
+    //console.log(game.map.phase);
 
 }
 
