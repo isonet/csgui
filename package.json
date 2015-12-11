@@ -1,0 +1,22 @@
+{
+  "name": "csgui",
+  "version": "1.0.0",
+  "description": "A gui for Counter-Strike: Global Offensive, using the new API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isonet/csgui.git"
+  },
+  "keywords": [
+    "csgo"
+  ],
+  "author": "Paul Biester",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isonet/csgui/issues"
+  },
+  "homepage": "https://github.com/isonet/csgui#readme"
+}
