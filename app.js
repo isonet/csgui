@@ -11,7 +11,7 @@ server = http.createServer(function(req, res) {
         res.writeHead(200, {
             'Content-Type': 'text/html'
         });
-        res.end(JSON.stringify(gameCollection, ull, 2));
+        res.end(JSON.stringify(gameCollection, null, 2));
     } else {
         if (req.method == 'POST') {
             res.writeHead(200, {
