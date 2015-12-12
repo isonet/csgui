@@ -7,6 +7,6 @@
     "components"
   ],
   "dependencies": {
-    "react": "~0.14.3"
+    "rivets": "~0.8.1"
   }
 }
