@@ -65,6 +65,7 @@ router.post('/p', function (req, res, next) {
         req.on('end', function() {
             console.log(body);
             var data = JSON.parse(body);
+            console.log(data);
             if(data.hasOwnProperty('provider') && data.provider.hasOwnProperty('steamid')) {
                 gameCollection[data.provider.steamid] = data;
                 //var game = gameCollection[data.provider.steamid];
