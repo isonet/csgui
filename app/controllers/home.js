@@ -53,6 +53,7 @@ router.get('/p', function (req, res, next) {
 });
 
 router.post('/p', function (req, res, next) {
+    console.log(req);
 
         res.writeHead(200, {
             'Content-Type': 'text/html'
