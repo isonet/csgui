@@ -1,6 +1,7 @@
 var express = require('express');
+var expressSession = require('express-session');
 var glob = require('glob');
-
+var passport = require('passport');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -32,6 +33,10 @@ module.exports = function(app, config) {
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
+
+  app.use(expressSession({secret: 'You will never guess this secret'}));
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
