@@ -10,7 +10,7 @@
    (function poll(){
     $.ajax({ url: "/u/76561198192124290/json", success: function(data){
         //Update your dashboard gauge
-        console.log(data);
+        console.log(data.player.weapons.weapon_1.ammo_clip);
     }, dataType: "json", complete: poll, timeout: 30000 });
 })();
 </script>

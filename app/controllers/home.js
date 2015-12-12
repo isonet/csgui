@@ -54,7 +54,7 @@ router.get('/u/:steamId/json', function (req, res, next) {
 });
 
 
-router.get('/p', function (req, res, next) {
+router.get('/', function (req, res, next) {
         res.writeHead(200, {
             'Content-Type': 'text/html'
         });
@@ -62,35 +62,100 @@ router.get('/p', function (req, res, next) {
         res.end(html);
 });
 
-router.post('/p', function (req, res, next) {
-    //console.log(req);
+var update = function(dataBody) {
+    var data = JSON.parse(dataBody);
+    console.log(data);
+    if(data.hasOwnProperty('provider') && data.provider.hasOwnProperty('steamid')) {
+        gameCollection[data.provider.steamid] = data;
+        var steamId = data.provider.steamid;
+        var tData = {
+            steamId: steamId,
+            map: gameCollection[steamId].map || {},
+            round: gameCollection[steamId].round || {},
+            raw: JSON.stringify(gameCollection[steamId], null, 4)
+        };
+        if(connections.hasOwnProperty(steamId)) {
+            connections[steamId].send(data);
+            //connections[steamId].send(data);
+        }
+    }
+};
 
-        res.writeHead(200, {
-            'Content-Type': 'text/html'
-        });
+router.post('/', function (req, res, next) {
+    console.log("Handling POST request...");
+    res.writeHead(200, {'Content-Type': 'text/html'});
 
-        var body = '';
-        req.on('data', function(data) {
-            body += data;
-        });
-        req.on('end', function() {
-            console.log(body);
-            var data = JSON.parse(body);
-            console.log(data);
-            if(data.hasOwnProperty('provider') && data.provider.hasOwnProperty('steamid')) {
-                gameCollection[data.provider.steamid] = data;
-                var steamId = data.provider.steamid;
-                var tData = {
-                    steamId: steamId,
-                    map: gameCollection[steamId].map || {},
-                    round: gameCollection[steamId].round || {},
-                    raw: JSON.stringify(gameCollection[steamId], null, 4)
-                };
-                if(connections.hasOwnProperty(steamId)) {
-                    connections[steamId].send(data);
-                    //connections[steamId].send(data);
-                }
-            }
-            res.end('');
-        });
+    var body = '';
+    req.on('data', function (data) {
+        body += data;
+    });
+    req.on('end', function () {
+        console.log("POST payload: " + body);
+        update(body);
+    	res.end( '' );
+    });
+
+
+
+
+    //var cDataParsed = JSON.parse(cData);
+
+
+
+
+    //    console.log(data);
+        // if(data.hasOwnProperty('provider') && data.provider.hasOwnProperty('steamid')) {
+        //     gameCollection[data.provider.steamid] = data;
+        //     var steamId = data.provider.steamid;
+        //     var tData = {
+        //         steamId: steamId,
+        //         map: gameCollection[steamId].map || {},
+        //         round: gameCollection[steamId].round || {},
+        //         raw: JSON.stringify(gameCollection[steamId], null, 4)
+        //     };
+        //     if(connections.hasOwnProperty(steamId)) {
+        //         //connections[steamId].send(data);
+        //         //connections[steamId].send(data);
+        //     }
+        // }
+
+
+
+
+
+
+
+
+        // res.writeHead(200, {
+        //     'Content-Type': 'text/html'
+        // });
+        //
+        // var body = '';
+        // req.on('data', function(data) {
+        //      body += data;
+        // });
+        // req.on('end', function() {
+        //     res.end('');
+        //     var data = JSON.parse(body);
+        //     console.log(data);
+        //     if(data.hasOwnProperty('provider') && data.provider.hasOwnProperty('steamid')) {
+        //         gameCollection[data.provider.steamid] = data;
+        //         var steamId = data.provider.steamid;
+        //         var tData = {
+        //             steamId: steamId,
+        //             map: gameCollection[steamId].map || {},
+        //             round: gameCollection[steamId].round || {},
+        //             raw: JSON.stringify(gameCollection[steamId], null, 4)
+        //         };
+        //         if(connections.hasOwnProperty(steamId)) {
+        //             connections[steamId].send(data);
+        //             //connections[steamId].send(data);
+        //         }
+        //     }
+        //
+        // });
+        // req.on("error", function(err) {
+        //     console.log(err);
+        //     return next(err);
+        // });
 });
