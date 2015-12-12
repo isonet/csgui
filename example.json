@@ -1,0 +1,838 @@
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869748
+	},
+	"player": {
+		"steamid": "76561198192124290",
+		"name": "NightHawk",
+		"activity": "menu"
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869809
+	},
+	"player": {
+		"steamid": "76561198192124290",
+		"name": "NightHawk",
+		"activity": "menu"
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869816
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "gameover",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"round": {
+		"phase": "freezetime",
+		"win_team": "CT"
+	},
+	"player": {
+		"steamid": "76561198192124290",
+		"name": "unconnected",
+		"team": "T",
+		"activity": "playing",
+		"state": {
+			"health": 0,
+			"armor": 0,
+			"helmet": false,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"name": "NightHawk",
+			"activity": "menu"
+		}
+	},
+	"added": {
+		"player": {
+			"team": true,
+			"state": true,
+			"weapons": true,
+			"match_stats": true
+		}
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869819
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "gameover",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"round": {
+		"phase": "freezetime",
+		"win_team": "CT"
+	},
+	"player": {
+		"steamid": "76561198192124290",
+		"name": "NightHawk",
+		"activity": "playing",
+		"state": {
+			"health": 0,
+			"armor": 0,
+			"helmet": false,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"name": "unconnected",
+			"team": "T"
+		}
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869821
+	},
+	"player": {
+		"steamid": "76561198192124290",
+		"name": "NightHawk",
+		"activity": "menu"
+	},
+	"previously": {
+		"map": true,
+		"round": true,
+		"player": {
+			"activity": "playing",
+			"state": {
+				"health": 0,
+				"armor": 0,
+				"helmet": false,
+				"flashed": 0,
+				"smoked": 0,
+				"burning": 0,
+				"money": 0,
+				"round_kills": 0,
+				"round_killhs": 0
+			},
+			"weapons": {
+
+			},
+			"match_stats": {
+				"kills": 0,
+				"assists": 0,
+				"deaths": 0,
+				"mvps": 0,
+				"score": 0
+			}
+		}
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869827
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "warmup",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"player": {
+		"steamid": "76561198192124290",
+		"name": "unconnected",
+		"activity": "menu",
+		"state": {
+			"health": 0,
+			"armor": 0,
+			"helmet": false,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"name": "NightHawk"
+		}
+	},
+	"added": {
+		"player": {
+			"state": true,
+			"weapons": true,
+			"match_stats": true
+		}
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869829
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "warmup",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"player": {
+		"steamid": "76561198192124290",
+		"name": "NightHawk",
+		"activity": "playing",
+		"state": {
+			"health": 0,
+			"armor": 0,
+			"helmet": false,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"name": "unconnected",
+			"activity": "menu"
+		}
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869831
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "warmup",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"player": {
+		"steamid": "76561198075080636",
+		"name": "ChaldeanPlayer",
+		"team": "T",
+		"activity": "playing",
+		"state": {
+			"health": 100,
+			"armor": 100,
+			"helmet": true,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+			"weapon_0": {
+				"name": "weapon_knife_t",
+				"paintkit": "default",
+				"type": "Knife",
+				"state": "holstered"
+			},
+			"weapon_1": {
+				"name": "weapon_glock",
+				"paintkit": "aq_glock18_flames_blue",
+				"type": "Pistol",
+				"ammo_clip": 20,
+				"ammo_clip_max": 20,
+				"ammo_reserve": 120,
+				"state": "active"
+			}
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"steamid": "76561198192124290",
+			"name": "NightHawk",
+			"state": {
+				"health": 0,
+				"armor": 0,
+				"helmet": false
+			}
+		}
+	},
+	"added": {
+		"player": {
+			"weapons": {
+				"weapon_0": true,
+				"weapon_1": true
+			},
+			"team": true
+		}
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869832
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "warmup",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"player": {
+		"steamid": "76561198075080636",
+		"name": "ChaldeanPlayer",
+		"team": "T",
+		"activity": "playing",
+		"state": {
+			"health": 100,
+			"armor": 100,
+			"helmet": true,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+			"weapon_0": {
+				"name": "weapon_knife_t",
+				"paintkit": "default",
+				"type": "Knife",
+				"state": "holstered"
+			},
+			"weapon_1": {
+				"name": "weapon_glock",
+				"paintkit": "aq_glock18_flames_blue",
+				"type": "Pistol",
+				"ammo_clip": 20,
+				"ammo_clip_max": 20,
+				"ammo_reserve": 120,
+				"state": "holstered"
+			},
+			"weapon_2": {
+				"name": "weapon_nova",
+				"paintkit": "default",
+				"type": "Shotgun",
+				"ammo_clip": 8,
+				"ammo_clip_max": 8,
+				"ammo_reserve": 32,
+				"state": "active"
+			}
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"weapons": {
+				"weapon_1": {
+					"state": "active"
+				}
+			}
+		}
+	},
+	"added": {
+		"player": {
+			"weapons": {
+				"weapon_2": true
+			}
+		}
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869840
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "warmup",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"player": {
+		"steamid": "76561198075080636",
+		"name": "ChaldeanPlayer",
+		"team": "T",
+		"activity": "playing",
+		"state": {
+			"health": 100,
+			"armor": 100,
+			"helmet": true,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+			"weapon_0": {
+				"name": "weapon_knife_t",
+				"paintkit": "default",
+				"type": "Knife",
+				"state": "holstered"
+			},
+			"weapon_1": {
+				"name": "weapon_glock",
+				"paintkit": "aq_glock18_flames_blue",
+				"type": "Pistol",
+				"ammo_clip": 20,
+				"ammo_clip_max": 20,
+				"ammo_reserve": 120,
+				"state": "holstered"
+			},
+			"weapon_2": {
+				"name": "weapon_nova",
+				"paintkit": "default",
+				"type": "Shotgun",
+				"ammo_clip": 7,
+				"ammo_clip_max": 8,
+				"ammo_reserve": 32,
+				"state": "active"
+			}
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"weapons": {
+				"weapon_2": {
+					"ammo_clip": 8
+				}
+			}
+		}
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869841
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "warmup",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"player": {
+		"steamid": "76561198075080636",
+		"name": "ChaldeanPlayer",
+		"team": "T",
+		"activity": "playing",
+		"state": {
+			"health": 0,
+			"armor": 0,
+			"helmet": false,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 1,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"state": {
+				"health": 100,
+				"armor": 100,
+				"helmet": true
+			},
+			"weapons": {
+				"weapon_0": {
+					"name": "weapon_knife_t",
+					"paintkit": "default",
+					"type": "Knife",
+					"state": "holstered"
+				},
+				"weapon_1": {
+					"name": "weapon_glock",
+					"paintkit": "aq_glock18_flames_blue",
+					"type": "Pistol",
+					"ammo_clip": 20,
+					"ammo_clip_max": 20,
+					"ammo_reserve": 120,
+					"state": "holstered"
+				},
+				"weapon_2": {
+					"name": "weapon_nova",
+					"paintkit": "default",
+					"type": "Shotgun",
+					"ammo_clip": 7,
+					"ammo_clip_max": 8,
+					"ammo_reserve": 32,
+					"state": "active"
+				}
+			},
+			"match_stats": {
+				"deaths": 0
+			}
+		}
+	}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869842
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "warmup",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"player": {
+		"steamid": "76561197967086373",
+		"name": "P∂Trθn",
+		"team": "CT",
+		"activity": "playing",
+		"state": {
+			"health": 76,
+			"armor": 85,
+			"helmet": true,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 1,
+			"round_killhs": 0
+		},
+		"weapons": {
+			"weapon_0": {
+				"name": "weapon_knife",
+				"paintkit": "default",
+				"type": "Knife",
+				"state": "holstered"
+			},
+			"weapon_1": {
+				"name": "weapon_revolver",
+				"paintkit": "default",
+				"type": "Pistol",
+				"ammo_clip": 8,
+				"ammo_clip_max": 8,
+				"ammo_reserve": 8,
+				"state": "holstered"
+			},
+			"weapon_2": {
+				"name": "weapon_awp",
+				"paintkit": "aq_awp_twine",
+				"type": "SniperRifle",
+				"ammo_clip": 9,
+				"ammo_clip_max": 10,
+				"ammo_reserve": 30,
+				"state": "active"
+			}
+		},
+		"match_stats": {
+			"kills": 1,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 10
+		}
+	},
+	"previously": {
+		"player": {
+			"steamid": "76561198075080636",
+			"name": "ChaldeanPlayer",
+			"team": "T",
+			"state": {
+				"health": 0,
+				"armor": 0,
+				"helmet": false,
+				"round_kills": 0
+			},
+			"match_stats": {
+				"kills": 0,
+				"deaths": 1,
+				"score": 0
+			}
+		}
+	},
+	"added": {
+		"player": {
+			"weapons": {
+				"weapon_0": true,
+				"weapon_1": true,
+				"weapon_2": true
+			}
+		}
+	}
+}
+}
+{
+	"provider": {
+		"name": "Counter-Strike: Global Offensive",
+		"appid": 730,
+		"version": 13514,
+		"steamid": "76561198192124290",
+		"timestamp": 1449869844
+	},
+	"map": {
+		"mode": "deathmatch",
+		"name": "de_dust2",
+		"phase": "warmup",
+		"round": 0,
+		"team_ct": {
+			"score": 0
+		},
+		"team_t": {
+			"score": 0
+		}
+	},
+	"player": {
+		"steamid": "76561198192124290",
+		"name": "NightHawk",
+		"team": "T",
+		"activity": "playing",
+		"state": {
+			"health": 100,
+			"armor": 100,
+			"helmet": true,
+			"flashed": 0,
+			"smoked": 0,
+			"burning": 0,
+			"money": 0,
+			"round_kills": 0,
+			"round_killhs": 0
+		},
+		"weapons": {
+			"weapon_0": {
+				"name": "weapon_knife_t",
+				"paintkit": "default",
+				"type": "Knife",
+				"state": "holstered"
+			},
+			"weapon_1": {
+				"name": "weapon_glock",
+				"paintkit": "default",
+				"type": "Pistol",
+				"ammo_clip": 20,
+				"ammo_clip_max": 20,
+				"ammo_reserve": 120,
+				"state": "active"
+			}
+		},
+		"match_stats": {
+			"kills": 0,
+			"assists": 0,
+			"deaths": 0,
+			"mvps": 0,
+			"score": 0
+		}
+	},
+	"previously": {
+		"player": {
+			"steamid": "76561197967086373",
+			"name": "P∂Trθn",
+			"team": "CT",
+			"state": {
+				"health": 76,
+				"armor": 85,
+				"round_kills": 1
+			},
+			"weapons": {
+				"weapon_0": {
+					"name": "weapon_knife"
+				},
+				"weapon_1": {
+					"name": "weapon_revolver",
+					"ammo_clip": 8,
+					"ammo_clip_max": 8,
+					"ammo_reserve": 8,
+					"state": "holstered"
+				},
+				"weapon_2": {
+					"name": "weapon_awp",
+					"paintkit": "aq_awp_twine",
+					"type": "SniperRifle",
+					"ammo_clip": 9,
+					"ammo_clip_max": 10,
+					"ammo_reserve": 30,
+					"state": "active"
+				}
+			},
+			"match_stats": {
+				"kills": 1,
+				"score": 10
+			}
+		}
+	}
+}
