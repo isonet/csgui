@@ -53,7 +53,7 @@ router.get('/p', function (req, res, next) {
 });
 
 router.post('/p', function (req, res, next) {
-    console.log(req);
+    //console.log(req);
 
         res.writeHead(200, {
             'Content-Type': 'text/html'
@@ -79,7 +79,7 @@ router.post('/p', function (req, res, next) {
                     raw: JSON.stringify(gameCollection[steamId], null, 4)
                 };
                 //global.updateClient();
-                req.app.io.emit("update", tData);
+                //req.app.io.emit("update", tData);
             }
             res.end('');
         });
