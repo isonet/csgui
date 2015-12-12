@@ -36,7 +36,6 @@ router.get('/u/:steamId', function (req, res, next) {
             round: round,
             raw: JSON.stringify(gameCollection[steamId], null, 4)
         };
-        //console.log(tData);
         res.render('user', tData);
     } else {
         // Render the main page with the error user not found
@@ -65,7 +64,6 @@ router.post('/p', function (req, res, next) {
         });
         req.on('end', function() {
 
-            //console.log(body);
             var data = JSON.parse(body);
             if(data.hasOwnProperty('provider') && data.provider.hasOwnProperty('steamid')) {
                 gameCollection[data.provider.steamid] = data;
