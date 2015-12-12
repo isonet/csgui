@@ -16,14 +16,17 @@ function Api (d) {
   if(!d.player.weapons.weapon_2) d.player.weapons.weapon_2 = {};
   if(!d.player.match_stats) d.player.match_stats = {};
 
+  var name;
+  if(d.player.name === 'unconnected') {
+      name = '';
+  } else {
+      name = d.player.name || '';
+  }
+
   this.meta = {
       steamId: d.provider.steamid || '',
       version: d.provider.version || 0,
-      name: function() {
-          if(d.player.name === 'unconnected') {
-              return (d.player.name || '');
-          }
-      }
+      name: name
   };
   this.map = {
       mode: d.map.mode || '',
@@ -34,8 +37,8 @@ function Api (d) {
       scoreT: d.map.team_t.score || 0
   };
   this.round = {
-      phase: d.round.phase,
-      win_team: d.round.win_team,
+      phase: d.round.phase || '',
+      win_team: d.round.win_team || '',
   };
   this.player = {
       team: d.player.team || '',

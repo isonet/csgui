@@ -1,0 +1,54 @@
+<html>
+<head>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/components/sightglass/index.js"></script>
+<script src="/components/rivets/dist/rivets.min.js"></script>
+</head>
+<body>
+<div id="main">
+    <h1>Counter-Strike: GO</h1>
+    <h3><span>Player name</span>{ main.meta.name }</h3>
+    <p><span>Map:</span>{ main.map.name }</p>
+    <p><span>Mode:</span>{ main.map.mode }</p>
+    <p><span>Phase:</span>{ main.map.phase }</p>
+    <p>
+        <span>Score:</span>
+        <span>{ main.map.scoreCt }</span>
+        <span>&ndash;</span>
+        <span>{ main.map.scoreT }</span>
+    </p>
+    <p>
+        <span>Round:</span>
+        <span>{ main.map.round }</span>
+    </p>
+    <p>
+        <span>Roundphase:</span> { main.round.phase }
+    </p>
+</div>
+
+
+<script>
+   // (function poll() {
+   //    setTimeout(function() {
+   //        $.ajax({ url: "/u/76561198192124290/json", success: function(data) {
+   //             console.log(data);
+   //        }, dataType: "json", complete: poll });
+   //     }, 30000);
+   // })();
+   var mainData = {main : {}};
+   rivets.bind($('#main'), mainData);
+   (function poll(qXHR, textStatus) {
+       if(textStatus === undefined || textStatus === 'success') {
+           $.ajax({ url: "/u/76561198192124290/json", success: function(data){
+               console.log(data);
+               mainData.main = JSON.parse(JSON.stringify(data));
+           }, dataType: "json", complete: poll, timeout: 30000 });
+       } else {
+           setTimeout(poll, 5000);
+       }
+
+    })();
+
+</script>
+</body>
+</html>

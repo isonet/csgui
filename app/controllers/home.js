@@ -31,37 +31,38 @@ var gameCollection = {};
 var connections = {};
 
 router.get('/u/:steamId', function (req, res, next) {
-    var steamId = req.params['steamId'];
-    if(gameCollection.hasOwnProperty(steamId)) {
-        // Render the page for the specific steam user
-        var map = gameCollection[steamId].map || {
-            mode: "deathmatch",
-            name: "de_dust2",
-            phase: "gameover",
-            round: 0,
-            team_ct: {
-                score: 0
-            },
-            team_t: {
-                score: 0
-            }
-        };
-        var round = gameCollection[steamId].round || {
-            phase: "freezetime",
-            win_team: "CT"
-        };
-        var tData = {
-            steamId: steamId,
-            map: map,
-            round: round,
-            raw: JSON.stringify(gameCollection[steamId], null, 4)
-        };
-        res.render('user', tData);
-    } else {
-        // Render the main page with the error user not found
-        res.render('index', {title:'error', all: JSON.stringify(gameCollection, null, 4)});
-
-    }
+    // var steamId = req.params['steamId'];
+    // if(gameCollection.hasOwnProperty(steamId)) {
+    //     // Render the page for the specific steam user
+    //     var map = gameCollection[steamId].map || {
+    //         mode: "deathmatch",
+    //         name: "de_dust2",
+    //         phase: "gameover",
+    //         round: 0,
+    //         team_ct: {
+    //             score: 0
+    //         },
+    //         team_t: {
+    //             score: 0
+    //         }
+    //     };
+    //     var round = gameCollection[steamId].round || {
+    //         phase: "freezetime",
+    //         win_team: "CT"
+    //     };
+    //     var tData = {
+    //         steamId: steamId,
+    //         map: map,
+    //         round: round,
+    //         raw: JSON.stringify(gameCollection[steamId], null, 4)
+    //     };
+    //     res.render('user', tData);
+    // } else {
+    //     // Render the main page with the error user not found
+    //     res.render('index', {title:'error', all: JSON.stringify(gameCollection, null, 4)});
+    //
+    // }
+    res.sendfile('./public/u.html');
 });
 
 router.get('/u', function (req, res, next) {
@@ -74,12 +75,20 @@ router.get('/u', function (req, res, next) {
 
 router.get('/u/:steamId/json', function (req, res, next) {
     var steamId = req.params['steamId'];
-    // res.write("lol");
-    // res.write("lol2");
-    // res.end();
-    //res.contentType( 'application/json' );
-    //res.write(gameCollection[steamId]);
-    connections[steamId] = res;
+
+    // TODO We need to diferentiate between different clients
+    if(connections.hasOwnProperty(steamId)) {
+        console.log('---Keeping open');
+        connections[steamId] = res;
+    } else {
+        console.log('---Normal send open');
+        connections[steamId] = res;
+        if(!gameCollection.hasOwnProperty(steamId)) {
+            gameCollection[steamId] = new Api();
+        }
+        res.send(gameCollection[steamId]);
+    }
+
 });
 
 
