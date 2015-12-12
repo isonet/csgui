@@ -1,14 +1,13 @@
 var express = require('express'),
   router = express.Router(),
   Article = require('../models/article');
-var io;
 
 module.exports = function (app) {
-    io = app.io;
   app.use('/', router);
 };
 
 var gameCollection = {};
+var connections = {};
 
 router.get('/u/:steamId', function (req, res, next) {
     var steamId = req.params['steamId'];
@@ -39,10 +38,21 @@ router.get('/u/:steamId', function (req, res, next) {
         res.render('user', tData);
     } else {
         // Render the main page with the error user not found
-        res.render('index', {title:'error'});
+        res.render('index', {title:'error', all: JSON.stringify(gameCollection, null, 4)});
 
     }
 });
+
+router.get('/u/:steamId/json', function (req, res, next) {
+    var steamId = req.params['steamId'];
+    // res.write("lol");
+    // res.write("lol2");
+    // res.end();
+    //res.contentType( 'application/json' );
+    //res.write(gameCollection[steamId]);
+    connections[steamId] = res;
+});
+
 
 router.get('/p', function (req, res, next) {
         res.writeHead(200, {
@@ -69,8 +79,6 @@ router.post('/p', function (req, res, next) {
             console.log(data);
             if(data.hasOwnProperty('provider') && data.provider.hasOwnProperty('steamid')) {
                 gameCollection[data.provider.steamid] = data;
-                //var game = gameCollection[data.provider.steamid];
-                //game = ;
                 var steamId = data.provider.steamid;
                 var tData = {
                     steamId: steamId,
@@ -78,8 +86,10 @@ router.post('/p', function (req, res, next) {
                     round: gameCollection[steamId].round || {},
                     raw: JSON.stringify(gameCollection[steamId], null, 4)
                 };
-                //global.updateClient();
-                //req.app.io.emit("update", tData);
+                if(connections.hasOwnProperty(steamId)) {
+                    connections[steamId].send(data);
+                    //connections[steamId].send(data);
+                }
             }
             res.end('');
         });
