@@ -25,7 +25,11 @@ module.exports = function(app, config) {
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
 
-  app.use(expressSession({secret: 'You will never guess this secret'}));
+  app.use(expressSession({
+      secret: 'You will never guess this secret',
+      resave: true,
+      saveUninitialized: true
+  }));
   app.use(passport.initialize());
   app.use(passport.session());
 
@@ -43,21 +47,11 @@ module.exports = function(app, config) {
   if(app.get('env') === 'development'){
     app.use(function (err, req, res, next) {
       res.status(err.status || 500);
-      res.render('error', {
-        message: err.message,
-        error: err,
-        title: 'error'
-      });
     });
   }
 
   app.use(function (err, req, res, next) {
     res.status(err.status || 500);
-      res.render('error', {
-        message: err.message,
-        error: {},
-        title: 'error'
-      });
   });
 
 };
