@@ -1,0 +1,110 @@
+<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+<!-- The core React library -->
+<script src="https://fb.me/react-0.14.3.js"></script>
+<!-- The ReactDOM Library -->
+<script src="https://fb.me/react-dom-0.14.3.js"></script>
+
+<div id="main"></div>
+<script>
+    var io = io.connect('http://localhost:8080');
+
+
+    var CsGo = React.createClass({
+      displayName: "CsGo",
+      componentDidMount: function () {
+          var $this = this;
+        io.on('update', function(data) {
+            console.log(data);
+            $this.handleData(data);
+        });
+      },
+
+      getInitialState: function getInitialState() {
+        return {
+            map: {
+                mode: "",
+                name: "",
+                phase: "",
+                round: 0,
+                team_ct: {
+                    score: 0
+                },
+                team_t: {
+                    score: 0
+                }
+            },
+            round: {
+                phase: "",
+                win_team: ""
+            }
+        };
+      },
+      handleData: function (data) {
+          if(data !== undefined) {
+              this.setState({ steamId: data.steamId, map: data.map, round: data.round });
+          }
+      },
+      render: function render() {
+        return React.createElement(
+          "div",
+          null,
+          React.createElement(
+            "h1",
+            null,
+            "Counter-Strike: GO"
+          ),
+          React.createElement(
+            "h3",
+            null,
+            "Profile of ",
+            this.state.steamId
+          ),
+          React.createElement(
+            "p",
+            null,
+            "Map: ",
+            this.state.map.name
+          ),
+          React.createElement(
+            "p",
+            null,
+            "Mode: ",
+            this.state.map.mode
+          ),
+          React.createElement(
+            "p",
+            null,
+            "Phase: ",
+            this.state.map.phase
+          ),
+          React.createElement(
+            "p",
+            null,
+            "Score: ",
+            this.state.map.team_ct.score,
+            " – ",
+            this.state.map.team_t.score
+          ),
+          React.createElement(
+            "p",
+            null,
+            "Round: ",
+            this.state.map.round
+          ),
+          React.createElement(
+            "p",
+            null,
+            "Roundphase: ",
+            this.state.round.phase
+          ),
+          React.createElement(
+            "pre",
+            null,
+            this.state.raw
+          )
+        );
+      }
+    });
+
+    ReactDOM.render(React.createElement(CsGo, null), document.getElementById('main'));
+</script>

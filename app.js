@@ -1,55 +1,30 @@
-http = require('http');
-fs = require('fs');
+//
+//
+// var express = require('express'),
+//   config = require('./config/config');
+//
+// var app = express();
+//
+// require('./config/express')(app, config);
+//
+// app.listen(config.port, function () {
+//   console.log('Express server listening on port ' + config.port);
+// });
 
-var gameCollection = {};
+var express = require('express');
+var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-port = process.env.PORT;
-host = '0.0.0.0';
+app.io = io;
 
-server = http.createServer(function(req, res) {
-    if(req.url=='/index.html'){
-        res.writeHead(200, {
-            'Content-Type': 'text/html'
-        });
-        res.end(JSON.stringify(gameCollection, null, 2));
-    } else {
-        if (req.method == 'POST') {
-            res.writeHead(200, {
-                'Content-Type': 'text/html'
-            });
+io.on('connection', function(socket) {
+        console.log('a user connected');
+    });
 
-            var body = '';
-            req.on('data', function(data) {
-                body += data;
-            });
-            req.on('end', function() {
-                //console.log(body);
-                update(JSON.parse(body));
-                res.end('');
-            });
+var config = require('./config/config');
+require('./config/express')(app, config);
 
-        } else {
-            res.writeHead(200, {
-                'Content-Type': 'text/html'
-            });
-            var html = 'yes';
-            res.end(html);
-        }
-    }
-
-
-
+server.listen(config.port, function () {
+   console.log('Express server listening on port ' + config.port);
 });
-
-var update = function(data) {
-    if(!gameCollection.hasOwnProperty(data.provider.steamid)) {
-        gameCollection[data.provider.steamid] = {};
-    }
-    var game = gameCollection[data.provider.steamid];
-    game.raw = data;
-    //console.log(game.map.phase);
-
-}
-
-server.listen(port);
-console.log('Listening at ttp://' + host + ':' + port);
