@@ -26,7 +26,7 @@ module.exports = function(app, config) {
   app.use(methodOverride());
 
   app.use(expressSession({
-      secret: 'You will never guess this secret',
+      secret: 'You will never guess this secret', 
       resave: true,
       saveUninitialized: true
   }));
