@@ -8,9 +8,10 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
+// TODO Fix for deployment url
 passport.use(new SteamStrategy({
-    returnURL: 'http://localhost:8080/login/return',
-    realm: 'http://localhost:8080/',
+    returnURL: process.env.DOMAIN_URL + 'login/return', // || 'http://localhost:8080/login/return',
+    realm: process.env.DOMAIN_URL,
     apiKey: process.env.API_KEY
     //profile: false
   },
