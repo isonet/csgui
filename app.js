@@ -2,11 +2,26 @@
 
 var express = require('express'),
   config = require('./config/config');
-
+  var https = require('https');
+  var http = require('http');
 var app = express();
+var fs = require('fs');
 
 require('./config/express')(app, config);
 
-app.listen(config.port, function () {
-  console.log('Express server listening on port ' + config.port);
-});
+var privateKey  = fs.readFileSync('/home/pbiester/certificates/tlse.isonet.fr/privkey.pem', 'utf8');
+var certificate = fs.readFileSync('/home/pbiester/certificates/tlse.isonet.fr/cert.pem', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+
+http.createServer(app).listen(80);
+https.createServer(credentials, app).listen(443);
+
+// The app.listen() method is a convenience method for the following (for HTTP only):
+//
+// app.listen = function() {
+//   var server = http.createServer(this);
+//   return server.listen.apply(server, arguments);
+// };
+//app.listen(config.port, function () {
+//  console.log('Express server listening on port ' + config.port);
+//});
