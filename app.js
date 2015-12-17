@@ -12,7 +12,7 @@ require('./config/express')(app, config);
 //var privateKey  = fs.readFileSync('/etc/letsencrypt/tlse.isonet.fr/privkey.pem', 'utf8');
 //var certificate = fs.readFileSync('/etc/letsencrypt/tlse.isonet.fr/cert.pem', 'utf8');
 //var credentials = {key: privateKey, cert: certificate};
-PORT = process.ENV.PORT || 8080;
+PORT = process.env.PORT || 8080;
 http.createServer(app).listen(PORT);
 //https.createServer(credentials, app).listen(443);
 
