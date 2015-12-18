@@ -1,4 +1,4 @@
-map $uri $example_org_preferred_proto {
+map $uri $proto {
 	default "https";
 	~^/ "http";
 }
@@ -9,7 +9,7 @@ server {
   server_name $NOSSL_SERVER_NAME;
   access_log  /var/log/nginx/${APP}-access.log;
   error_log   /var/log/nginx/${APP}-error.log;
-  if ($example_org_preferred_proto = "https") {
+  if ($proto = "https") {
   		return 301 https://\$host:$NGINX_SSL_PORT\$request_uri;
   }
 }
