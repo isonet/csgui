@@ -1,4 +1,4 @@
-public/components
+lib/
 
 # Created by https://www.gitignore.io/api/bower,webstorm,node,appengine,coffeescript,less,grunt,gradle,jetbrains,osx,linux,windows
 
