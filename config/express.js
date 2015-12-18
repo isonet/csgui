@@ -8,7 +8,7 @@ var methodOverride = require('method-override');
 module.exports = function (app, config) {
     app.use(compression({}));
     app.use(express.static(config.root + '/public'));
-    app.use('/lib',  express.static(__dirname + '/lib'));
+    app.use('/lib',  express.static(config.root + '/lib'));
     app.use(methodOverride());
 
     app.use(expressSession({
