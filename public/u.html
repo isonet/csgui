@@ -1,11 +1,13 @@
 <html>
 <head>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="/components/sightglass/index.js"></script>
-<script src="/components/rivets/dist/rivets.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="/components/sightglass/index.js"></script>
+    <script src="/components/rivets/dist/rivets.min.js"></script>
 </head>
 <body>
 <div id="main">
+    <p>{ main.player.weapons.weapon_1.ammo_clip } / { main.player.weapons.weapon_1.ammo_clip_max } -- { main.player.weapons.weapon_1.ammo_reserve }</p>
+    <p></p>
     <h1>Counter-Strike: GO</h1>
     <h3><span>Player name</span>{ main.meta.name }</h3>
     <p><span>Map:</span>{ main.map.name }</p>
@@ -28,24 +30,21 @@
 
 
 <script>
-   // (function poll() {
-   //    setTimeout(function() {
-   //        $.ajax({ url: "/u/76561198192124290/json", success: function(data) {
-   //             console.log(data);
-   //        }, dataType: "json", complete: poll });
-   //     }, 30000);
-   // })();
-   var mainData = {main : {}};
-   rivets.bind($('#main'), mainData);
-   (function poll(qXHR, textStatus) {
-       if(textStatus === undefined || textStatus === 'success') {
-           $.ajax({ url: "/u/76561198192124290/json", success: function(data){
-               console.log(data);
-               mainData.main = JSON.parse(JSON.stringify(data));
-           }, dataType: "json", complete: poll, timeout: 30000 });
-       } else {
-           setTimeout(poll, 5000);
-       }
+    window.tries = 0;
+    var mainData = {main: {}};
+    rivets.bind($('#main'), mainData);
+    (function poll(qXHR, textStatus) {
+        if (textStatus === undefined || textStatus === 'success') {
+            $.ajax({
+                url: "/u/76561198192124290/json", success: function (data) {
+                    window.tries = 0;
+                    mainData.main = JSON.parse(JSON.stringify(data));
+                }, dataType: "json", complete: poll, timeout: 30000
+            });
+        } else {
+            window.tries = window.tries + 1;
+            setTimeout(poll, 1000 * window.tries);
+        }
 
     })();
 
