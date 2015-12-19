@@ -49,6 +49,7 @@ router.get('/u/:steamId/json', function (req, res, next) {
     if (connections.hasOwnProperty(steamId)) {
         console.log('Old connection');
         connections[steamId] = res;
+        console.log(connections);
     } else {
         console.log('Ney connection' + steamId);
         connections[steamId] = res;
@@ -85,6 +86,7 @@ var update = function (dataBody) {
     var apiObject = new Api(data);
     if (apiObject.meta.steamId !== undefined) {
         gameCollection[apiObject.meta.steamId] = apiObject;
+        console.log(gameCollection);
         console.log(connections.hasOwnProperty(apiObject.meta.steamId));
         if (connections.hasOwnProperty(apiObject.meta.steamId)) {
             connections[apiObject.meta.steamId].send(apiObject);
