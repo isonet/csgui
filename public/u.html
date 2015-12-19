@@ -36,7 +36,7 @@
     (function poll(qXHR, textStatus) {
         if (textStatus === undefined || textStatus === 'success') {
             $.ajax({
-                url: "/u/76561198192124290/json", success: function (data) {
+                url: "/u/76561198011192382/json", success: function (data) {
                     window.tries = 0;
                     mainData.main = JSON.parse(JSON.stringify(data));
                 }, dataType: "json", complete: poll, timeout: 30000
