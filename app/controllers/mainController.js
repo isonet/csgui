@@ -42,7 +42,7 @@ router.get('/u', function (req, res) {
     }
 });
 
-router.get('/u/:steamId/json', function (req, res) {
+router.get('/u/:steamId/json', function (req, res, next) {
     var steamId = req.params['steamId'];
 
     // TODO We need to diferentiate between different clients
