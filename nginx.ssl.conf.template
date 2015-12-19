@@ -1,6 +1,6 @@
 map $uri $proto {
-	default "https";
-	~^/ "http";
+default "https";
+~^/ "http";
 }
 
 server {
