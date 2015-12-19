@@ -47,8 +47,10 @@ router.get('/u/:steamId/json', function (req, res, next) {
 
     // TODO We need to diferentiate between different clients
     if (connections.hasOwnProperty(steamId)) {
+        console.log('Old connection');
         connections[steamId] = res;
     } else {
+        console.log('Ney connection' + steamId);
         connections[steamId] = res;
         if (!gameCollection.hasOwnProperty(steamId)) {
             gameCollection[steamId] = new Api();
