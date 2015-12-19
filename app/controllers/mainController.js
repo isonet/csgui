@@ -83,6 +83,7 @@ var update = function (dataBody) {
     var apiObject = new Api(data);
     if (apiObject.meta.steamId !== undefined) {
         gameCollection[apiObject.meta.steamId] = apiObject;
+        console.log(gameCollection[apiObject.meta.steamId]);
         if (connections.hasOwnProperty(apiObject.meta.steamId)) {
             connections[apiObject.meta.steamId].send(apiObject);
         }
