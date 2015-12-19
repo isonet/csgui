@@ -90,7 +90,12 @@ var update = function (dataBody) {
         console.log(apiObject.meta.steamId);
         console.log(connections.hasOwnProperty(apiObject.meta.steamId));
         if (connections.hasOwnProperty(apiObject.meta.steamId)) {
-            connections[apiObject.meta.steamId].send(apiObject);
+            try {
+                connections[apiObject.meta.steamId].send(apiObject);
+            } catch (ex) {
+                delete connections[apiObject.meta.steamId];
+            }
+
         }
     }
 };
