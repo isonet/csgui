@@ -1,7 +1,4 @@
-map $uri $proto {
-default "https";
-~^/ "http";
-}
+
 
 server {
   listen      [::]:$NGINX_PORT;
@@ -9,9 +6,9 @@ server {
   server_name $NOSSL_SERVER_NAME;
   access_log  /var/log/nginx/${APP}-access.log;
   error_log   /var/log/nginx/${APP}-error.log;
-  if ($proto = "https") {
+  #if ($proto = "https") {
   		return 301 https://\$host:$NGINX_SSL_PORT\$request_uri;
-  }
+  #}
 }
 
 server {
@@ -44,4 +41,8 @@ $SSL_DIRECTIVES
     proxy_set_header X-Request-Start \$msec;
   }
   include $DOKKU_ROOT/$APP/nginx.conf.d/*.conf;
+}
+map $uri $proto {
+default "https";
+~^/ "http";
 }
