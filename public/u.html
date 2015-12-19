@@ -6,6 +6,9 @@
 </head>
 <body>
 <div id="main">
+    <img rv-src="items.weapon_0" width="128" height="128" />
+    <img rv-src="items.weapon_1" width="128" height="128" />
+    <img rv-src="items.weapon_2" width="128" height="128" />
     <p>{ main.player.weapons.weapon_1.ammo_clip } / { main.player.weapons.weapon_1.ammo_clip_max } -- { main.player.weapons.weapon_1.ammo_reserve }</p>
     <p></p>
     <h1>Counter-Strike: GO</h1>
@@ -30,15 +33,39 @@
 
 
 <script>
+    rivets.binders.src = function(el, value) {
+        el.src = value;
+    };
+
+    var items = (function () {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': '/items_game_cdn.json',
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();
+
     window.tries = 0;
     var mainData = {main: {}};
     rivets.bind($('#main'), mainData);
     (function poll(qXHR, textStatus) {
         if (textStatus === undefined || textStatus === 'success') {
+            var url = window.location.href + '/json';
             $.ajax({
-                url: "/u/76561198011192382/json", success: function (data) {
+                url: url, success: function (data) {
                     window.tries = 0;
                     mainData.main = JSON.parse(JSON.stringify(data));
+                    mainData.items = {
+                        weapon_0: items[mainData.main.player.weapons.weapon_0.name + mainData.main.player.weapons.weapon_0.paintkit],
+                        weapon_1: items[mainData.main.player.weapons.weapon_1.name + mainData.main.player.weapons.weapon_1.paintkit],
+                        weapon_2: items[mainData.main.player.weapons.weapon_2.name + mainData.main.player.weapons.weapon_2.paintkit]
+                    }
                 }, dataType: "json", complete: poll, timeout: 30000
             });
         } else {

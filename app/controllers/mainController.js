@@ -2,35 +2,27 @@ var express = require('express');
 var router = express.Router();
 var Api = require('../models/api');
 var passport = require('passport');
-var SteamStrategy = require('passport-steam').Strategy;
 var path = require('path');
+
+// TODO Use authentication token?
 
 module.exports = function (app) {
     app.use('/', router);
 };
 
-passport.use(new SteamStrategy({
-        returnURL: process.env['DOMAIN_URL'] + 'login/return',
-        realm: process.env['DOMAIN_URL'],
-        apiKey: process.env['API_KEY']
-    },
-    function (identifier, profile, done) {
-        return done(null, {identifier: profile.id})
+function loggedIn(req, res, next) {
+    if (req.user) {
+        next();
+    } else {
+        res.redirect('/login');
     }
-));
-
-passport.serializeUser(function (user, done) {
-    done(null, user);
-});
-
-passport.deserializeUser(function (user, done) {
-    done(null, user);
-});
+}
 
 var gameCollection = {};
 var connections = {};
 
-router.get('/u/:steamId', function (req, res) {
+router.get('/u/:steamId', loggedIn, function (req, res) {
+    // TODO Check if the game has already connected and if not display a loading icon and offer a config file
     res.sendFile(path.join(__dirname, '../../public/', 'u.html'));
 });
 
@@ -42,7 +34,8 @@ router.get('/u', function (req, res) {
     }
 });
 
-router.get('/u/:steamId/json', function (req, res, next) {
+router.get('/u/:steamId/json', loggedIn, function (req, res, next) {
+    // TODO Check that steamID belongs to loggedIn user
     var steamId = req.params['steamId'];
 
     // TODO We need to diferentiate between different clients
@@ -63,11 +56,7 @@ router.get('/u/:steamId/json', function (req, res, next) {
 
 
 router.get('/', function (req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'text/html'
-    });
-    var html = 'yes';
-    res.end(html);
+    res.sendFile(path.join(__dirname, '../../public/', 'index.html'));
 });
 
 

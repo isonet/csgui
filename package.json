@@ -19,5 +19,7 @@
     "passport": "^0.3.2",
     "passport-steam": "^0.1.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+  }
 }
