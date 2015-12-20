@@ -40,19 +40,19 @@ rivets.bind($('#live'), mainData);
                 mainData.main = JSON.parse(JSON.stringify(data));
                 mainData.items = {};
                 if(mainData.main.player.weapons.weapon_0.paintkit !== '') {
-                    mainData.items.weapon_0 = mainData.main.player.weapons.weapon_0.name + '_' + mainData.main.player.weapons.weapon_0.paintkit;
+                    mainData.items.weapon_0 = items[mainData.main.player.weapons.weapon_0.name + '_' + mainData.main.player.weapons.weapon_0.paintkit];
                 } else {
-                    mainData.items.weapon_0 = mainData.main.player.weapons.weapon_0.name;
+                    mainData.items.weapon_0 = items[mainData.main.player.weapons.weapon_0.name];
                 }
                 if(mainData.main.player.weapons.weapon_1.paintkit !== '') {
-                    mainData.items.weapon_1 = mainData.main.player.weapons.weapon_1.name + '_' + mainData.main.player.weapons.weapon_1.paintkit;
+                    mainData.items.weapon_1 = items[mainData.main.player.weapons.weapon_1.name + '_' + mainData.main.player.weapons.weapon_1.paintkit];
                 } else {
-                    mainData.items.weapon_1 = mainData.main.player.weapons.weapon_1.name;
+                    mainData.items.weapon_1 = items[mainData.main.player.weapons.weapon_1.name];
                 }
                 if(mainData.main.player.weapons.weapon_2.paintkit !== '') {
-                    mainData.items.weapon_2 = mainData.main.player.weapons.weapon_2.name + '_' + mainData.main.player.weapons.weapon_2.paintkit;
+                    mainData.items.weapon_2 = items[mainData.main.player.weapons.weapon_2.name + '_' + mainData.main.player.weapons.weapon_2.paintkit];
                 } else {
-                    mainData.items.weapon_2 = mainData.main.player.weapons.weapon_2.name;
+                    mainData.items.weapon_2 = items[mainData.main.player.weapons.weapon_2.name];
                 }
             }, dataType: "json", complete: poll, timeout: 30000
         });
