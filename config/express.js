@@ -12,6 +12,9 @@ module.exports = function (app, config) {
     app.use('/lib',  express.static(config.root + '/lib'));
     app.use(methodOverride());
 
+    app.set('views', process.cwd() + '/app/views');
+    app.engine('ejs', require('ejs').__express);
+
     app.use(expressSession({
         secret: 'You will never guess this secret',
         resave: true,
@@ -47,7 +50,7 @@ module.exports = function (app, config) {
     app.use(function (err, req, res, next) {
         console.error(err.stack);
         res.status(500).send('Something broke!');
-        res.status(404).send('Not found!');
+        //res.status(404).send('Not found!');
     });
 
 };

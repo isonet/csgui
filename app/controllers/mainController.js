@@ -23,7 +23,8 @@ var connections = {};
 
 router.get('/u/:steamId', loggedIn, function (req, res) {
     // TODO Check if the game has already connected and if not display a loading icon and offer a config file
-    res.sendFile(path.join(__dirname, '../../public/', 'u.html'));
+    //res.sendFile(path.join(__dirname, '../../public/', 'u.html'));
+    res.render('pages/live.ejs');
 });
 
 router.get('/u', function (req, res) {

@@ -1,0 +1,96 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% var title = 'CS:GO-GUI - Live Stats'; %>
+        <% include ../partials/head %>
+    </head>
+    <body>
+        <div class="container" id="live">
+            <header>
+                <% include ../partials/header %>
+
+            </header>
+
+            <main>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card" rv-class-card-primary="main.player.weapons.weapon_2.state | eq 'active'">
+                            <h3 class="card-header">Primary</h3>
+                            <img rv-src="items.weapon_2" alt="Primary weapon" width="255"/>
+                            <ul class="list-group list-group-flush text-xs-right">
+                                <li class="list-group-item" rv-class-text-warning="main.player.weapons.weapon_2.ammo_clip | lt 4"
+                                    rv-class-text-danger="main.player.weapons.weapon_2.ammo_clip | lt 2">
+                                    Ammo: { main.player.weapons.weapon_2.ammo_clip }
+                                </li>
+                                <li class="list-group-item">Clip: { main.player.weapons.weapon_2.ammo_clip_max }</li>
+                                <li class="list-group-item">Reserve: { main.player.weapons.weapon_2.ammo_reserve }</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card" rv-class-card-primary="main.player.weapons.weapon_1.state | eq 'active'">
+                            <h3 class="card-header">Secondary</h3>
+                            <img rv-src="items.weapon_1" alt="Secondary weapon" width="255"/>
+                            <ul class="list-group list-group-flush text-xs-right">
+                                <li class="list-group-item" rv-class-text-warning="main.player.weapons.weapon_1.ammo_clip | lt 4"
+                                    rv-class-text-danger="main.player.weapons.weapon_1.ammo_clip | lt 2">
+                                    Ammo: { main.player.weapons.weapon_1.ammo_clip }
+                                </li>
+                                <li class="list-group-item">Clip: { main.player.weapons.weapon_1.ammo_clip_max }</li>
+                                <li class="list-group-item">Reserve: { main.player.weapons.weapon_1.ammo_reserve }</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card" rv-class-card-primary="main.player.weapons.weapon_0.state | eq 'active'">
+                            <!-- TODO Find a better name than "Knife" -->
+                            <h3 class="card-header">Knife</h3>
+                            <img rv-src="items.weapon_0" alt="Knife" width="255"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                    </div>
+                </div>
+
+                <div id="main">
+                    <h1>Counter-Strike: GO</h1>
+                    <h3><span>Player name</span>{ main.meta.name }</h3>
+                    <p><span>Map:</span>{ main.map.name }</p>
+                    <p><span>Mode:</span>{ main.map.mode }</p>
+                    <p><span>Phase:</span>{ main.map.phase }</p>
+                    <p>
+                        <span>Score:</span>
+                        <span>{ main.map.scoreCt }</span>
+                        <span>&ndash;</span>
+                        <span>{ main.map.scoreT }</span>
+                    </p>
+                    <p>
+                        <span>Round:</span>
+                        <span>{ main.map.round }</span>
+                    </p>
+                    <p>
+                        <span>Roundphase:</span> { main.round.phase }
+                    </p>
+                </div>
+            </main>
+
+            <footer>
+                <% include ../partials/footer %>
+            </footer>
+        </div>
+
+        <!-- jQuery first, then Bootstrap JS. -->
+        <script src="/lib/jquery/dist/jquery.min.js"></script>
+        <script src="/lib/tether/dist/js/tether.min.js"></script>
+        <script src="/lib/sightglass/index.js"></script>
+        <script src="/lib/rivets/dist/rivets.min.js"></script>
+
+        <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/js/live.js"></script>
+
+
+
+    </body>
+</html>
