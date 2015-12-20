@@ -39,17 +39,17 @@ rivets.bind($('#live'), mainData);
                 window.tries = 0;
                 mainData.main = JSON.parse(JSON.stringify(data));
                 mainData.items = {};
-                if(mainData.main.player.weapons.weapon_0.paintkit !== '') {
+                if(mainData.main.player.weapons.weapon_0.paintkit !== 'default') {
                     mainData.items.weapon_0 = items[mainData.main.player.weapons.weapon_0.name + '_' + mainData.main.player.weapons.weapon_0.paintkit];
                 } else {
                     mainData.items.weapon_0 = items[mainData.main.player.weapons.weapon_0.name];
                 }
-                if(mainData.main.player.weapons.weapon_1.paintkit !== '') {
+                if(mainData.main.player.weapons.weapon_1.paintkit !== 'default') {
                     mainData.items.weapon_1 = items[mainData.main.player.weapons.weapon_1.name + '_' + mainData.main.player.weapons.weapon_1.paintkit];
                 } else {
                     mainData.items.weapon_1 = items[mainData.main.player.weapons.weapon_1.name];
                 }
-                if(mainData.main.player.weapons.weapon_2.paintkit !== '') {
+                if(mainData.main.player.weapons.weapon_2.paintkit !== 'default') {
                     mainData.items.weapon_2 = items[mainData.main.player.weapons.weapon_2.name + '_' + mainData.main.player.weapons.weapon_2.paintkit];
                 } else {
                     mainData.items.weapon_2 = items[mainData.main.player.weapons.weapon_2.name];
