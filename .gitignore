@@ -102,14 +102,6 @@ node_modules
 appengine-generated/
 
 
-### CoffeeScript ###
-*.js
-
-
-### Less ###
-*.css
-
-
 ### grunt ###
 # Grunt usually compiles files inside this directory
 dist/
