@@ -1,0 +1,93 @@
+body {
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #cfd2da;
+    background-color: #252830;
+    border-color: #434857;
+}
+
+img.bomb {
+    width: 50%;
+}
+
+img.weapon {
+    /* opacity: 0.4; */
+    -webkit-filter: drop-shadow(4px 4px 6px white);
+    filter: drop-shadow(4px 4px 6px white);
+}
+
+img.weapon-holstered {
+    /* opacity: 0.4; */
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.container {
+    margin-top: 3%;
+}
+
+header {
+    margin: 0 0 5% 0;
+}
+
+.card {
+    background-color: #252830;
+    border-color: #434857;
+}
+
+.card > h3 {
+    background-color: #252830;
+    border-color: #434857;
+}
+
+.card > .list-group > .list-group-item {
+    background-color: #252830;
+    border-color: #434857;
+}
+
+.card > h3 {
+    margin-bottom: 0;
+}
+
+.card-header {
+    background-color: #252830;
+}
+
+
+@-webkit-keyframes fadeCustom {
+    from {
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.1;
+    }
+}
+
+@keyframes fadeCustom {
+    from {
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.1;
+    }
+}
+
+.fadeCustom {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: fadeCustom;
+    animation-name: fadeCustom;
+}

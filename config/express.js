@@ -7,12 +7,13 @@ var methodOverride = require('method-override');
 var SteamStrategy = require('passport-steam').Strategy;
 
 module.exports = function (app, config) {
-    app.use(compression({}));
+    // BUG: Compression breaks SSE!!!
+    //app.use(compression({}));
     app.use(express.static(config.root + '/public'));
     app.use('/lib',  express.static(config.root + '/lib'));
     app.use(methodOverride());
 
-    app.set('views', process.cwd() + '/app/views');
+    app.set('views', express.static(config.root + '/app/views'));
     app.engine('ejs', require('ejs').__express);
 
     app.use(expressSession({

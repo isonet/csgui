@@ -5,6 +5,7 @@
     <head>
         <% var title = 'CS:GO-GUI - Live Stats'; %>
         <% include ../partials/head %>
+        <link rel="stylesheet" href="/css/live.css">
     </head>
     <body>
         <div class="container" id="live">
@@ -16,68 +17,90 @@
             <main>
                 <div class="row">
                     <div class="col-sm-3">
-                        <div class="card" rv-class-card-primary="main.player.weapons.weapon_2.state | eq 'active'">
-                            <h3 class="card-header">Primary</h3>
-                            <img rv-src="items.weapon_2" alt="Primary weapon" width="255"/>
-                            <ul class="list-group list-group-flush text-xs-right">
-                                <li class="list-group-item" rv-class-text-warning="main.player.weapons.weapon_2.ammo_clip | lt 4"
-                                    rv-class-text-danger="main.player.weapons.weapon_2.ammo_clip | lt 2">
-                                    Ammo: { main.player.weapons.weapon_2.ammo_clip }
-                                </li>
-                                <li class="list-group-item">Clip: { main.player.weapons.weapon_2.ammo_clip_max }</li>
-                                <li class="list-group-item">Reserve: { main.player.weapons.weapon_2.ammo_reserve }</li>
-                            </ul>
+                        <div class="card card-inverse text-xs-center">
+                            <!-- TODO: Add link for callout map and smokes? -->
+                            <div class="card-header">Bomb</div>
+                            <img class="bomb img-fluid center-block fadeCustom" rv-if="main.round.bomb  | eq 'planted'" src="/img/c4-planted.svg" alt="Bomb Planted"/>
+                            <img class="bomb img-fluid center-block" rv-if="main.round.bomb  | eq 'exploded'" src="/img/c4-planted.svg" alt="Bomb Exploded"/>
+                            <img class="bomb img-fluid center-block" rv-if="main.round.bomb  | eq 'defused'" src="/img/c4-defused.svg" alt="Bomb Defused"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card-group">
+                            <div class="card card-inverse text-xs-center">
+                                <div class="card-header">Terrorists</div>
+                            </div>
+                            <div class="card card-inverse text-xs-center">
+                                <div class="card-header">Rounds</div>
+                                <h5>15/30</h5>
+                            </div>
+                            <div class="card card-inverse text-xs-center">
+                                <div class="card-header">Counter-Terrorists</div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="card" rv-class-card-primary="main.player.weapons.weapon_1.state | eq 'active'">
-                            <h3 class="card-header">Secondary</h3>
-                            <img rv-src="items.weapon_1" alt="Secondary weapon" width="255"/>
-                            <ul class="list-group list-group-flush text-xs-right">
-                                <li class="list-group-item" rv-class-text-warning="main.player.weapons.weapon_1.ammo_clip | lt 4"
-                                    rv-class-text-danger="main.player.weapons.weapon_1.ammo_clip | lt 2">
-                                    Ammo: { main.player.weapons.weapon_1.ammo_clip }
-                                </li>
-                                <li class="list-group-item">Clip: { main.player.weapons.weapon_1.ammo_clip_max }</li>
-                                <li class="list-group-item">Reserve: { main.player.weapons.weapon_1.ammo_reserve }</li>
-                            </ul>
+                        <div class="card card-inverse text-xs-center">
+                            <div class="card-header">Header</div>
+                            <img class="img-fluid center-block" src="/img/128.jpg" alt=""/>
                         </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card" rv-class-card-primary="main.player.weapons.weapon_0.state | eq 'active'">
-                            <!-- TODO Find a better name than "Knife" -->
-                            <h3 class="card-header">Knife</h3>
-                            <img rv-src="items.weapon_0" alt="Knife" width="255"/>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
                     </div>
                 </div>
-
-                <div id="main">
-                    <h1>Counter-Strike: GO</h1>
-                    <h3><span>Player name</span>{ main.meta.name }</h3>
-                    <p><span>Map:</span>{ main.map.name }</p>
-                    <p><span>Mode:</span>{ main.map.mode }</p>
-                    <p><span>Phase:</span>{ main.map.phase }</p>
-                    <p>
-                        <span>Score:</span>
-                        <span>{ main.map.scoreCt }</span>
-                        <span>&ndash;</span>
-                        <span>{ main.map.scoreT }</span>
-                    </p>
-                    <p>
-                        <span>Round:</span>
-                        <span>{ main.map.round }</span>
-                    </p>
-                    <p>
-                        <span>Roundphase:</span> { main.round.phase }
-                    </p>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card card-inverse">
+                            <div class="card-header">{ main.meta.name }</div>
+                            <img class="img-fluid center-block" rv-src="main.map.name | maps" alt="Map"/>
+                            <ul class="list-group list-group-flush text-xs-right">
+                                <li class="list-group-item">Map: { main.map.name }</li>
+                                <li class="list-group-item">Mode: { main.map.mode  }</li>
+                                <li class="list-group-item">Steam ID: { main.meta.steamId  }</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="card-group">
+                            <div class="card card-inverse">
+                                <div class="card-header">Primary</div>
+                                <img rv-src="items.weapon_2" alt="Primary weapon" class="img-fluid center-block weapon" rv-class-weapon-holstered="main.player.weapons.weapon_2.state | eq 'holstered'"/>
+                                <ul class="list-group list-group-flush text-xs-right">
+                                    <li class="list-group-item" rv-class-text-warning="main.player.weapons.weapon_2.ammo_clip | lt 4"
+                                        rv-class-text-danger="main.player.weapons.weapon_2.ammo_clip | lt 2">
+                                        Ammo: { main.player.weapons.weapon_2.ammo_clip }
+                                    </li>
+                                    <li class="list-group-item">Clip: { main.player.weapons.weapon_2.ammo_clip_max }</li>
+                                    <li class="list-group-item">Reserve: { main.player.weapons.weapon_2.ammo_reserve }</li>
+                                </ul>
+                            </div>
+                            <div class="card card-inverse">
+                                <div class="card-header">Secondary</div>
+                                <img rv-src="items.weapon_1" alt="Secondary weapon" class="img-fluid center-block weapon" rv-class-weapon-holstered="main.player.weapons.weapon_1.state | eq 'holstered'"/>
+                                <ul class="list-group list-group-flush text-xs-right">
+                                    <li class="list-group-item" rv-class-text-warning="main.player.weapons.weapon_1.ammo_clip | lt 4"
+                                        rv-class-text-danger="main.player.weapons.weapon_1.ammo_clip | lt 2">
+                                        Ammo: { main.player.weapons.weapon_1.ammo_clip }
+                                    </li>
+                                    <li class="list-group-item">Clip: { main.player.weapons.weapon_1.ammo_clip_max }</li>
+                                    <li class="list-group-item">Reserve: { main.player.weapons.weapon_1.ammo_reserve }</li>
+                                </ul>
+                            </div>
+                            <div class="card card-inverse">
+                                <!-- TODO Find a better name than "Knife" -->
+                                <div class="card-header">Knife</div>
+                                <img rv-src="items.weapon_0" alt="Knife" class="img-fluid center-block weapon" rv-class-weapon-holstered="main.player.weapons.weapon_0.state | notEq 'active'"/>
+                                <ul class="list-group list-group-flush text-xs-right">
+                                    <li class="list-group-item"></li>
+                                    <li class="list-group-item"></li>
+                                    <li class="list-group-item"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
 
             <footer>
-                <% include ../partials/footer %>
+                <% include ../partials/footer.ejs %>
             </footer>
         </div>
 

@@ -4,22 +4,61 @@ var Api = require('../models/api');
 var passport = require('passport');
 var path = require('path');
 
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
+
 // TODO Use authentication token?
+
+// TODO Create live controller
 
 module.exports = function (app) {
     app.use('/', router);
 };
 
 function loggedIn(req, res, next) {
-    if (req.user) {
-        next();
-    } else {
-        res.redirect('/login');
-    }
+    //if (req.user) {
+    //    next();
+    //} else {
+    //    res.redirect('/login');
+    //}
+    next();
 }
 
 var gameCollection = {};
 var connections = {};
+var apiVersion = 'v1';
+
+router.get('/api/' + apiVersion + '/live/:steamId', function(req, res) {
+    var steamId = req.params['steamId'];
+
+    var messageCount = 0;
+
+    // let request last as long as possible
+    //req.socket.setTimeout(Number.MAX_VALUE); //Infinity
+
+    //send headers for event-stream connection
+    res.writeHead(200, {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive'
+    });
+
+    eventEmitter.on('update', function(id, data) {
+        //if(steamId === id) {
+            console.log('update', id);
+            messageCount++; // Increment our message count
+            res.write("id: " + messageCount + "\n");
+            res.write("event: liveUpdate\n");
+            res.write("data: " + JSON.stringify(data).replace('\n', '\\\n') + "\n\n");
+        //}
+    });
+    res.on('close', function() {
+        console.log('close');
+    });
+    if(gameCollection[steamId] !== undefined) {
+        eventEmitter.emit('update', steamId, gameCollection[steamId]);
+    }
+});
 
 router.get('/u/:steamId', loggedIn, function (req, res) {
     // TODO Check if the game has already connected and if not display a loading icon and offer a config file
@@ -41,11 +80,8 @@ router.get('/u/:steamId/json', loggedIn, function (req, res, next) {
 
     // TODO We need to diferentiate between different clients
     if (connections.hasOwnProperty(steamId)) {
-        console.log('Old connection');
         connections[steamId] = res;
-        console.log(connections);
     } else {
-        console.log('Ney connection' + steamId);
         connections[steamId] = res;
         if (!gameCollection.hasOwnProperty(steamId)) {
             gameCollection[steamId] = new Api();
@@ -75,10 +111,10 @@ var update = function (dataBody) {
     var data = JSON.parse(dataBody);
     var apiObject = new Api(data);
     if (apiObject.meta.steamId !== undefined) {
+        console.log('emit');
+        eventEmitter.emit('update', apiObject.meta.steamId, apiObject);
+
         gameCollection[apiObject.meta.steamId] = apiObject;
-        console.log(connections);
-        console.log(apiObject.meta.steamId);
-        console.log(connections.hasOwnProperty(apiObject.meta.steamId));
         if (connections.hasOwnProperty(apiObject.meta.steamId)) {
             try {
                 connections[apiObject.meta.steamId].send(apiObject);

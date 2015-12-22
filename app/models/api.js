@@ -16,17 +16,16 @@ function Api(d) {
     if (!d.player.weapons.weapon_2) d.player.weapons.weapon_2 = {};
     if (!d.player.match_stats) d.player.match_stats = {};
 
-    var name;
-    if (d.player.name === 'unconnected') {
-        name = '';
-    } else {
-        name = d.player.name || '';
-    }
-
     this.meta = {
         steamId: d.provider.steamid || '',
         version: d.provider.version || 0,
-        name: name
+        name: function() {
+            if (d.player.name === 'unconnected') {
+                return '';
+            } else {
+                return d.player.name || '';
+            }
+        }()
     };
     this.map = {
         mode: d.map.mode || '',
@@ -38,6 +37,7 @@ function Api(d) {
     };
     this.round = {
         phase: d.round.phase || '',
+        bomb: d.round.bomb || '',
         win_team: d.round.win_team || ''
     };
     this.player = {
@@ -57,27 +57,27 @@ function Api(d) {
         weapons: {
             weapon_0: {
                 name: d.player.weapons.weapon_0.name || '',
-                paintkit: d.player.weapons.weapon_0.paintkit || '',
+                paintkit: d.player.weapons.weapon_0.paintkit || 'default',
                 type: d.player.weapons.weapon_0.type || '',
-                state: d.player.weapons.weapon_0.state || ''
+                state: d.player.weapons.weapon_0.state || 'holstered'
             },
             weapon_1: {
                 name: d.player.weapons.weapon_1.name || '',
-                paintkit: d.player.weapons.weapon_1.paintkit || '',
+                paintkit: d.player.weapons.weapon_1.paintkit || 'default',
                 type: d.player.weapons.weapon_1.type || '',
                 ammo_clip: d.player.weapons.weapon_1.ammo_clip || 0,
                 ammo_clip_max: d.player.weapons.weapon_1.ammo_clip_max || 0,
                 ammo_reserve: d.player.weapons.weapon_1.ammo_reserve || 0,
-                state: d.player.weapons.weapon_1.state || ''
+                state: d.player.weapons.weapon_1.state || 'holstered'
             },
             weapon_2: {
                 name: d.player.weapons.weapon_2.name || '',
-                paintkit: d.player.weapons.weapon_2.paintkit || '',
+                paintkit: d.player.weapons.weapon_2.paintkit || 'default',
                 type: d.player.weapons.weapon_2.type || '',
                 ammo_clip: d.player.weapons.weapon_2.ammo_clip || 0,
                 ammo_clip_max: d.player.weapons.weapon_2.ammo_clip_max || 0,
                 ammo_reserve: d.player.weapons.weapon_2.ammo_reserve || 0,
-                state: d.player.weapons.weapon_2.state || ''
+                state: d.player.weapons.weapon_2.state || 'holstered'
             }
         },
         match_stats: {
